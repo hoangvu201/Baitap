@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let todoList = ["go to school at 7am", "read book at 12am"];
+
+        function addTask(task) {
+            todoList.push(task);
+        }
+        function displayList(list) {
+            console.log(todoList);
+        }
+        function update(location, text) {
+            todoList.splice(location, 0, text);
+            console.log(todoList);
+            // nhap [i] promt1 
+            // nhap a  promt2 
+            // push a vao [i] cua todoList
+            // in ra
+        }
+        function deleteTask(location) {
+            todoList.splice(location, 1);
+            console.log(todoList);
+        }
+        while (true) {
+            let a = prompt('')
+            switch (a) {
+                case "C":
+                    let addToList = prompt('Nội dung công việc mới');
+                    addTask(addToList);
+                    break;
+                case "R":
+                    displayList();
+                    break;
+                case "U":
+                    let addLocation = prompt('Vị trí công việc cập nhật');
+                    let addText = prompt('Nội dung công việc');
+                    update(addLocation, addText);
+                    break;
+                case "D":
+                    let deleteLocation = prompt('Vị trí công việc muốn xóa');
+                    deleteTask(deleteLocation);
+                    break;
+                default:
+                    console.log("giá trị sai");
+                    break;
+            }
+            if (a=="E") {
+                console.log("kết thúc làm việc");
+                break;
+            }
+        }
+    </script>
+</body>
+
+</html>
