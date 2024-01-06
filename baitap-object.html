@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<input type="text" id="text">
+<button onclick="addTocart()">mua</button>
+<button onclick="payCart()">thanh toán</button>
+
+<body>
+    <!-- 
+        Danh sách sản phẩm trong cửa hàng
+     -->
+    <script>
+        let cart = [];
+        let products =
+            [
+                {
+                    id: 115,
+                    name: "banhmi1",
+                    price: 5000,
+                },
+                {
+                    id: 116,
+                    name: "banhmi2",
+                    price: 6000,
+                },
+                {
+                    id: 117,
+                    name: "banhmi3",
+                    price: 7000,
+                },
+                {
+                    id: 118,
+                    name: "banhmi4",
+                    price: 8000,
+                },
+            ]
+        //1. cho ng dùng nhập tên sản phẩm muốn mua
+        //2. nếu có cho đi mua nếu không có báo không có hàng bán rồi return
+        //3, kiểm tra xem trong cart có sản phẩm đó chưa, có thì tăng số lượng
+        //không có thì push vào bình thường
+        //4. tính bill của ng mua
+        function addTocart() {
+            let inputValue = document.getElementById("text").value;
+            let check = -1;
+            for (let i = 0; i < products.length; i++) {
+                if (products[i].name == inputValue) {
+                    check = i;
+                    break;
+                }
+            }
+            if (check == -1) {
+                console.log("không có mặt hàng");
+                return;
+            }
+            let flag = -1;
+            for (let j = 0; j < cart.length; j++) {
+                if (cart[j].name == inputValue) {
+                    flag = j;
+                    break;
+                }
+            }
+            if (flag == -1) {
+                cart.push({ ...products[check], quantity: 1 });
+            } else {
+                cart[flag].quantity = ++cart[flag].quantity
+            }
+            console.log(cart);
+
+        }
+        function payCart() {
+            let tongTien = 0;
+            for (let i = 0; i < cart.length; i++) {
+                tongTien = tongTien + cart[i].price * cart[j].quantity;
+            }
+            console.log(tongTien);
+        }
+    </script>
+</body>
+
+</html>
